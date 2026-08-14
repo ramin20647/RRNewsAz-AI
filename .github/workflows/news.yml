@@ -29,27 +29,73 @@ jobs:
           python <<'PY'
           import feedparser
           import json
+          import re
           from datetime import datetime, timezone
 
           feeds = [
               {
                   "name": "AZƏRTAC",
-                  "url": "https://azertag.az/rss",
+                  "url": "https://azertag.az/rss"
               },
               {
                   "name": "Google News - Azərbaycan",
-                  "url": "https://news.google.com/rss/search?q=Azərbaycan&hl=az&gl=AZ&ceid=AZ:az",
+                  "url": "https://news.google.com/rss/search?q=Azərbaycan&hl=az&gl=AZ&ceid=AZ:az"
               }
           ]
+
+          def detect_category(title):
+
+              t = title.lower()
+
+              if any(x in t for x in [
+                  "futbol", "basketbol", "voleybol", "tennis",
+                  "idman", "olimpiya", "çempionat", "matç"
+              ]):
+                  return "İdman"
+
+              if any(x in t for x in [
+                  "iqtisadiyyat", "manat", "dollar", "bank",
+                  "neft", "qaz", "investisiya", "vergi", "büdcə"
+              ]):
+                  return "İqtisadiyyat"
+
+              if any(x in t for x in [
+                  "süni intellekt", "ai", "texnologiya",
+                  "internet", "telefon", "kompüter", "rəqəmsal"
+              ]):
+                  return "Texnologiya"
+
+              if any(x in t for x in [
+                  "prezident", "nazir", "parlament", "millət vəkili",
+                  "siyasi", "hökumət", "seçki"
+              ]):
+                  return "Siyasət"
+
+              if any(x in t for x in [
+                  "qəza", "yanğın", "partlayış", "cinayət",
+                  "həbs", "xəsarət", "vəfat", "hadisə"
+              ]):
+                  return "Hadisə"
+
+              if any(x in t for x in [
+                  "səhiyyə", "xəstəxana", "həkim", "təhsil",
+                  "məktəb", "universitet", "cəmiyyət"
+              ]):
+                  return "Cəmiyyət"
+
+              return "Azərbaycan"
 
           articles = []
           seen = set()
 
           for feed in feeds:
+
               try:
+
                   data = feedparser.parse(feed["url"])
 
                   for item in data.entries[:30]:
+
                       title = item.get("title", "").strip()
                       link = item.get("link", "").strip()
 
@@ -61,15 +107,19 @@ jobs:
 
                       seen.add(link)
 
+                      category = detect_category(title)
+
                       articles.append({
                           "title": title,
                           "link": link,
                           "source": feed["name"],
                           "published": item.get("published", ""),
-                          "category": "Azərbaycan"
+                          "category": category,
+                          "country": "Azerbaijan"
                       })
 
               except Exception as e:
+
                   print("Feed xətası:", feed["name"], e)
 
           result = {
@@ -79,9 +129,15 @@ jobs:
           }
 
           with open("news.json", "w", encoding="utf-8") as f:
-              json.dump(result, f, ensure_ascii=False, indent=2)
+              json.dump(
+                  result,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
 
           print("Toplanan xəbərlər:", len(articles))
+
           PY
 
       - name: Xəbərləri GitHub-a yadda saxla
