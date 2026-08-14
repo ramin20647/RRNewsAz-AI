@@ -1,44 +1,194 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="az">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="RR NEWS AI — modern automated news platform">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RR NEWS AI</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#111}
-header{background:#111;color:#fff;border-bottom:4px solid #d71920;position:sticky;top:0;z-index:10}
-.nav{max-width:1200px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:30px;font-weight:900}.logo span{color:#d71920}.badge{font-size:11px;border:1px solid #777;padding:5px 8px;letter-spacing:1px}
-nav a{color:#fff;text-decoration:none;margin-left:22px;font-size:14px}
-.breaking{background:#d71920;color:#fff}.breaking div{max-width:1200px;margin:auto;padding:9px 24px;font-weight:bold}
-.hero{background:#fff;border-bottom:1px solid #ddd}.hero-inner{max-width:1200px;margin:auto;padding:55px 24px 45px}
-.kicker{color:#d71920;font-weight:800;letter-spacing:2px;font-size:13px}
-h1{font-size:clamp(42px,7vw,78px);line-height:.95;margin:14px 0;letter-spacing:-4px}
-.hero p{max-width:650px;color:#555;font-size:18px;line-height:1.6}
-.btn{display:inline-block;margin-top:12px;background:#111;color:#fff;padding:13px 20px;text-decoration:none;font-weight:bold}
-main{max-width:1200px;margin:auto;padding:35px 24px}.section-title{border-left:5px solid #d71920;padding-left:12px;margin:0 0 22px;font-size:25px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#fff;border:1px solid #ddd;padding:22px;min-height:210px}
-.tag{font-size:11px;color:#d71920;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
-.card h3{font-size:21px;line-height:1.2;margin:12px 0}.card p{color:#666;line-height:1.5}.meta{font-size:12px;color:#888;margin-top:18px}
-footer{background:#111;color:#aaa;margin-top:40px}.foot{max-width:1200px;margin:auto;padding:35px 24px;display:flex;justify-content:space-between;gap:30px}
-@media(max-width:800px){nav{display:none}.grid{grid-template-columns:1fr}.hero-inner{padding-top:40px}.foot{display:block}h1{letter-spacing:-2px}}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #e31b23;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.breaking {
+    background: #e31b23;
+    color: white;
+    padding: 13px 7%;
+    font-weight: bold;
+}
+
+.hero {
+    background: white;
+    padding: 70px 7%;
+}
+
+.hero small {
+    color: #b00000;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 58px;
+    max-width: 700px;
+    margin: 15px 0;
+}
+
+.hero p {
+    max-width: 700px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 24px;
+    background: #222;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news {
+    padding: 50px 7%;
+}
+
+.news h2 {
+    font-size: 34px;
+    margin-bottom: 25px;
+}
+
+#newsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-top: 4px solid #e31b23;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card small {
+    color: #e31b23;
+    font-weight: bold;
+}
+
+.card h3 {
+    margin: 12px 0;
+    font-size: 22px;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.5;
+}
+
+footer {
+    margin-top: 50px;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+@media(max-width:700px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
 </style>
 </head>
+
 <body>
-<header><div class="nav"><div class="logo">RR<span>NEWS</span> <small style="font-size:10px;color:#aaa">AI</small></div><div class="badge">NEWS • TECHNOLOGY • FUTURE</div><nav><a href="#latest">Latest</a><a href="#about">About</a><a href="#projects">Projects</a></nav></div></header>
-<div class="breaking"><div>BREAKING NEWS &nbsp; | &nbsp; RR NEWS AI PLATFORM</div></div>
-<section class="hero"><div class="hero-inner"><div class="kicker">WELCOME TO RR NEWS AI</div><h1>News.<br>Intelligently.</h1><p>A modern news platform designed to collect, organize and present current events by date, category and source — with AI-assisted summaries planned for the next stage.</p><a class="btn" href="#latest">Explore Latest News →</a></div></section>
-<main id="latest"><h2 class="section-title">Latest News</h2><div class="grid">
-<article class="card"><div class="tag">Technology</div><h3>AI is transforming the way digital news platforms operate</h3><p>Sample story card — automated source collection and AI-assisted summaries will be connected in the next version.</p><div class="meta">14 August 2026 • RR NEWS</div></article>
-<article class="card"><div class="tag">World</div><h3>Global events at a glance</h3><p>News will be organized automatically by date, category and source as the platform develops.</p><div class="meta">14 August 2026 • RR NEWS</div></article>
-<article class="card"><div class="tag">Azerbaijan</div><h3>Local news section is ready for integration</h3><p>Verified sources and responsible publishing will be the foundation of the RR NEWS workflow.</p><div class="meta">14 August 2026 • RR NEWS</div></article>
-</div></main>
-<main id="about"><h2 class="section-title">About RR NEWS AI</h2><div class="card"><p><b>RR NEWS AI</b> is a developing independent news-platform project focused on automated news collection, date-based organization, source attribution and AI-assisted summarization.</p><p>News will not be copied wholesale from other publishers. Source attribution and responsible verification are central to the project.</p></div></main>
-<main id="projects"><h2 class="section-title">Future System</h2><div class="grid">
-<div class="card"><div class="tag">01</div><h3>News Collector</h3><p>RSS and permitted public feeds will provide incoming stories.</p></div>
-<div class="card"><div class="tag">02</div><h3>AI Newsroom</h3><p>AI-assisted classification, deduplication and concise original summaries.</p></div>
-<div class="card"><div class="tag">03</div><h3>Automated Publishing</h3><p>Scheduled workflows will publish organized stories to the website.</p></div>
-</div></main>
-<footer><div class="foot"><div><b style="color:#fff">RR NEWS AI</b><br>Independent news platform project.</div><div>Version 1.0 • Built for GitHub Pages</div></div></footer>
-</body></html>
+
+<header>
+    <div class="logo">RR<span>NEWS</span> <small>AI</small></div>
+
+    <nav>
+        <a href="#">Latest</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+    </nav>
+</header>
+
+<div class="breaking">
+    BREAKING NEWS &nbsp; | &nbsp; RR NEWS AI PLATFORM
+</div>
+
+<section class="hero">
+    <small>WELCOME TO RR NEWS AI</small>
+
+    <h1>News.<br>Intelligently.</h1>
+
+    <p>
+        Müasir xəbər platforması. Dünyadan və Azərbaycandan
+        aktual xəbərləri toplamaq, təşkil etmək və təqdim etmək
+        üçün hazırlanmış RR NEWS AI.
+    </p>
+
+    <a href="#latest" class="button">Ən son xəbərlər →</a>
+</section>
+
+<section class="news" id="latest">
+    <h2>Son xəbərlər</h2>
+
+    <div id="newsContainer">
+        <div class="card">
+            <small>RR NEWS AI</small>
+            <h3>Xəbərlər hazırlanır...</h3>
+            <p>
+                Sistemə xəbərlər əlavə olunur. Növbəti mərhələdə
+                xəbərlər avtomatik şəkildə yüklənəcək.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 RR NEWS AI — News • Technology • Future
+</footer>
+
+</body>
+</html>
