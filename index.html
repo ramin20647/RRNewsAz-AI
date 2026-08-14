@@ -6,137 +6,30 @@
 <title>RR NEWS AI</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #222;
-}
-
-header {
-    background: #111;
-    color: white;
-    padding: 22px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #e31b23;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: bold;
-}
-
-.breaking {
-    background: #e31b23;
-    color: white;
-    padding: 13px 7%;
-    font-weight: bold;
-}
-
-.hero {
-    background: white;
-    padding: 70px 7%;
-}
-
-.hero small {
-    color: #b00000;
-    font-weight: bold;
-}
-
-.hero h1 {
-    font-size: 58px;
-    max-width: 700px;
-    margin: 15px 0;
-}
-
-.hero p {
-    max-width: 700px;
-    font-size: 19px;
-    line-height: 1.6;
-    color: #555;
-}
-
-.button {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 24px;
-    background: #222;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.news {
-    padding: 50px 7%;
-}
-
-.news h2 {
-    font-size: 34px;
-    margin-bottom: 25px;
-}
-
-#newsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    border-top: 4px solid #e31b23;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
-
-.card small {
-    color: #e31b23;
-    font-weight: bold;
-}
-
-.card h3 {
-    margin: 12px 0;
-    font-size: 22px;
-}
-
-.card p {
-    color: #555;
-    line-height: 1.5;
-}
-
-footer {
-    margin-top: 50px;
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 30px;
-}
-
-@media(max-width:700px) {
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f4f4;color:#111}
+header{background:#111;color:#fff;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:30px;font-weight:900}.logo span{color:#e21b23}
+nav a{color:white;text-decoration:none;margin-left:20px}
+.breaking{background:#e21b23;color:white;padding:12px 7%;font-weight:bold}
+.hero{background:white;padding:55px 7%;border-bottom:1px solid #ddd}
+.hero small{color:#d71920;font-weight:bold;letter-spacing:2px}
+.hero h1{font-size:clamp(42px,7vw,72px);line-height:.95;margin:15px 0}
+.hero p{max-width:700px;color:#555;font-size:18px;line-height:1.6}
+main{padding:40px 7%;max-width:1400px;margin:auto}
+h2{border-left:5px solid #e21b23;padding-left:12px;margin-bottom:25px}
+#newsContainer{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:#fff;padding:23px;border-top:4px solid #e21b23;box-shadow:0 3px 12px #00000012}
+.category{color:#d71920;font-size:12px;font-weight:bold;text-transform:uppercase}
+.card h3{font-size:21px;margin:10px 0;line-height:1.25}
+.card p{color:#555;line-height:1.5}
+.meta{font-size:12px;color:#888;margin-top:15px}
+.card a{display:inline-block;margin-top:15px;color:#d71920;font-weight:bold;text-decoration:none}
+.status{text-align:center;padding:25px;color:#777}
+footer{background:#111;color:#aaa;text-align:center;padding:30px;margin-top:30px}
+@media(max-width:700px){
+header{flex-direction:column;gap:15px}
+nav a{margin:0 8px}
 }
 </style>
 </head>
@@ -144,51 +37,153 @@ footer {
 <body>
 
 <header>
-    <div class="logo">RR<span>NEWS</span> <small>AI</small></div>
-
-    <nav>
-        <a href="#">Latest</a>
-        <a href="#">About</a>
-        <a href="#">Projects</a>
-    </nav>
+<div class="logo">RR<span>NEWS</span> <small style="font-size:11px;color:#aaa">AI</small></div>
+<nav>
+<a href="#latest">Son xəbərlər</a>
+<a href="#about">Haqqımızda</a>
+</nav>
 </header>
 
 <div class="breaking">
-    BREAKING NEWS &nbsp; | &nbsp; RR NEWS AI PLATFORM
+🔴 BREAKING NEWS &nbsp; | &nbsp; AZƏRBAYCAN
 </div>
 
 <section class="hero">
-    <small>WELCOME TO RR NEWS AI</small>
-
-    <h1>News.<br>Intelligently.</h1>
-
-    <p>
-        Müasir xəbər platforması. Dünyadan və Azərbaycandan
-        aktual xəbərləri toplamaq, təşkil etmək və təqdim etmək
-        üçün hazırlanmış RR NEWS AI.
-    </p>
-
-    <a href="#latest" class="button">Ən son xəbərlər →</a>
+<small>RR NEWS AI</small>
+<h1>Xəbərlər.<br>Ağıllı şəkildə.</h1>
+<p>
+Azərbaycanda və dünyada baş verən hadisələri mənbələrdən
+toplayan və tarixə görə təşkil edən müasir xəbər platforması.
+</p>
 </section>
 
-<section class="news" id="latest">
-    <h2>Son xəbərlər</h2>
+<main id="latest">
+<h2>🇦🇿 Azərbaycandan son xəbərlər</h2>
 
-    <div id="newsContainer">
-        <div class="card">
-            <small>RR NEWS AI</small>
-            <h3>Xəbərlər hazırlanır...</h3>
-            <p>
-                Sistemə xəbərlər əlavə olunur. Növbəti mərhələdə
-                xəbərlər avtomatik şəkildə yüklənəcək.
-            </p>
-        </div>
-    </div>
-</section>
+<div id="newsContainer">
+<div class="status">Xəbərlər yüklənir...</div>
+</div>
+</main>
+
+<main id="about">
+<h2>RR NEWS AI</h2>
+<div class="card">
+<p>
+RR NEWS AI inkişaf etdirilən avtomatlaşdırılmış xəbər platformasıdır.
+Məqsəd müxtəlif xəbər mənbələrindən məlumatları toplamaq,
+kateqoriyalara ayırmaq və oxucuya mənbə keçidi ilə təqdim etməkdir.
+</p>
+</div>
+</main>
 
 <footer>
-    © 2026 RR NEWS AI — News • Technology • Future
+© 2026 RR NEWS AI — News • Technology • Future
 </footer>
+
+<script>
+
+async function loadNews(){
+
+const container=document.getElementById("newsContainer");
+
+try{
+
+const response=await fetch("news.json?"+Date.now());
+
+if(!response.ok){
+throw new Error("news.json tapılmadı");
+}
+
+const data=await response.json();
+
+container.innerHTML="";
+
+if(!data.articles || data.articles.length===0){
+
+container.innerHTML=
+'<div class="status">Hazırda yeni xəbər yoxdur.</div>';
+
+return;
+}
+
+data.articles.forEach(article=>{
+
+const card=document.createElement("article");
+
+card.className="card";
+
+card.innerHTML=`
+
+<div class="category">
+${article.category || "Azərbaycan"}
+</div>
+
+<h3>${escapeHTML(article.title || "Başlıqsız xəbər")}</h3>
+
+<p>
+Mənbə: ${escapeHTML(article.source || "Naməlum")}
+</p>
+
+<div class="meta">
+${escapeHTML(article.published || "")}
+</div>
+
+<a href="${safeURL(article.link)}"
+target="_blank"
+rel="noopener noreferrer">
+Ətraflı oxu →
+</a>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML=
+'<div class="status">Xəbərləri yükləmək mümkün olmadı.</div>';
+
+}
+
+}
+
+function escapeHTML(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function safeURL(url){
+
+try{
+
+const parsed=new URL(url);
+
+if(parsed.protocol==="http:" ||
+parsed.protocol==="https:"){
+
+return parsed.href;
+
+}
+
+}catch(e){}
+
+return "#";
+
+}
+
+loadNews();
+
+</script>
 
 </body>
 </html>
