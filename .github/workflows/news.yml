@@ -21,16 +21,18 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: RSS kitabxanasını qur
-        run: pip install feedparser
+      - name: Kitabxanaları qur
+        run: |
+          pip install feedparser deep-translator
 
-      - name: Azərbaycan xəbərlərini topla
+      - name: Azərbaycan xəbərlərini topla və tərcümə et
         run: |
           python <<'PY'
           import feedparser
           import json
-          import re
+          import time
           from datetime import datetime, timezone
+          from deep_translator import GoogleTranslator
 
           feeds = [
               {
@@ -43,47 +45,71 @@ jobs:
               }
           ]
 
+          translator = GoogleTranslator(
+              source="auto",
+              target="az"
+          )
+
           def detect_category(title):
 
               t = title.lower()
 
               if any(x in t for x in [
                   "futbol", "basketbol", "voleybol", "tennis",
-                  "idman", "olimpiya", "çempionat", "matç"
+                  "idman", "olimpiya", "çempionat", "matç",
+                  "football", "sport"
               ]):
                   return "İdman"
 
               if any(x in t for x in [
                   "iqtisadiyyat", "manat", "dollar", "bank",
-                  "neft", "qaz", "investisiya", "vergi", "büdcə"
+                  "neft", "qaz", "investisiya", "vergi", "büdcə",
+                  "экономика", "доллар", "банк", "нефть"
               ]):
                   return "İqtisadiyyat"
 
               if any(x in t for x in [
                   "süni intellekt", "ai", "texnologiya",
-                  "internet", "telefon", "kompüter", "rəqəmsal"
+                  "internet", "telefon", "kompüter", "rəqəmsal",
+                  "технология", "интернет"
               ]):
                   return "Texnologiya"
 
               if any(x in t for x in [
-                  "prezident", "nazir", "parlament", "millət vəkili",
-                  "siyasi", "hökumət", "seçki"
+                  "prezident", "nazir", "parlament",
+                  "millət vəkili", "siyasi", "hökumət", "seçki",
+                  "президент", "министр", "парламент", "выборы"
               ]):
                   return "Siyasət"
 
               if any(x in t for x in [
                   "qəza", "yanğın", "partlayış", "cinayət",
-                  "həbs", "xəsarət", "vəfat", "hadisə"
+                  "həbs", "xəsarət", "vəfat", "hadisə",
+                  "авария", "пожар", "взрыв", "арест"
               ]):
                   return "Hadisə"
 
               if any(x in t for x in [
                   "səhiyyə", "xəstəxana", "həkim", "təhsil",
-                  "məktəb", "universitet", "cəmiyyət"
+                  "məktəb", "universitet", "cəmiyyət",
+                  "здоровье", "больница", "образование", "школа"
               ]):
                   return "Cəmiyyət"
 
               return "Azərbaycan"
+
+          def translate_title(title):
+
+              try:
+                  result = translator.translate(title)
+
+                  if result:
+                      return result.strip()
+
+              except Exception as e:
+                  print("Tərcümə xətası:", e)
+
+              return title
 
           articles = []
           seen = set()
@@ -96,10 +122,15 @@ jobs:
 
                   for item in data.entries[:30]:
 
-                      title = item.get("title", "").strip()
-                      link = item.get("link", "").strip()
+                      original_title = item.get(
+                          "title", ""
+                      ).strip()
 
-                      if not title or not link:
+                      link = item.get(
+                          "link", ""
+                      ).strip()
+
+                      if not original_title or not link:
                           continue
 
                       if link in seen:
@@ -107,28 +138,53 @@ jobs:
 
                       seen.add(link)
 
-                      category = detect_category(title)
+                      translated_title = translate_title(
+                          original_title
+                      )
+
+                      category = detect_category(
+                          translated_title + " " + original_title
+                      )
 
                       articles.append({
-                          "title": title,
+                          "title_original": original_title,
+                          "title": translated_title,
+                          "language": "az",
                           "link": link,
                           "source": feed["name"],
-                          "published": item.get("published", ""),
+                          "published": item.get(
+                              "published", ""
+                          ),
                           "category": category,
                           "country": "Azerbaijan"
                       })
 
+                      time.sleep(0.5)
+
               except Exception as e:
 
-                  print("Feed xətası:", feed["name"], e)
+                  print(
+                      "Feed xətası:",
+                      feed["name"],
+                      e
+                  )
 
           result = {
-              "updated": datetime.now(timezone.utc).isoformat(),
+              "updated": datetime.now(
+                  timezone.utc
+              ).isoformat(),
+
               "country": "Azerbaijan",
+
               "articles": articles[:60]
           }
 
-          with open("news.json", "w", encoding="utf-8") as f:
+          with open(
+              "news.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+
               json.dump(
                   result,
                   f,
@@ -136,7 +192,10 @@ jobs:
                   indent=2
               )
 
-          print("Toplanan xəbərlər:", len(articles))
+          print(
+              "Toplanan xəbərlər:",
+              len(articles)
+          )
 
           PY
 
@@ -150,6 +209,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Yeni xəbər yoxdur."
           else
-            git commit -m "Auto update Azerbaijan news"
+            git commit -m "Auto update Azerbaijan news with translation"
             git push
           fi
