@@ -1,0 +1,99 @@
+name: Azerbaijan News Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository-ni yüklə
+        uses: actions/checkout@v4
+
+      - name: Python qur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: RSS kitabxanasını qur
+        run: pip install feedparser
+
+      - name: Azərbaycan xəbərlərini topla
+        run: |
+          python <<'PY'
+          import feedparser
+          import json
+          from datetime import datetime, timezone
+
+          feeds = [
+              {
+                  "name": "AZƏRTAC",
+                  "url": "https://azertag.az/rss",
+              },
+              {
+                  "name": "Google News - Azərbaycan",
+                  "url": "https://news.google.com/rss/search?q=Azərbaycan&hl=az&gl=AZ&ceid=AZ:az",
+              }
+          ]
+
+          articles = []
+          seen = set()
+
+          for feed in feeds:
+              try:
+                  data = feedparser.parse(feed["url"])
+
+                  for item in data.entries[:30]:
+                      title = item.get("title", "").strip()
+                      link = item.get("link", "").strip()
+
+                      if not title or not link:
+                          continue
+
+                      if link in seen:
+                          continue
+
+                      seen.add(link)
+
+                      articles.append({
+                          "title": title,
+                          "link": link,
+                          "source": feed["name"],
+                          "published": item.get("published", ""),
+                          "category": "Azərbaycan"
+                      })
+
+              except Exception as e:
+                  print("Feed xətası:", feed["name"], e)
+
+          result = {
+              "updated": datetime.now(timezone.utc).isoformat(),
+              "country": "Azerbaijan",
+              "articles": articles[:60]
+          }
+
+          with open("news.json", "w", encoding="utf-8") as f:
+              json.dump(result, f, ensure_ascii=False, indent=2)
+
+          print("Toplanan xəbərlər:", len(articles))
+          PY
+
+      - name: Xəbərləri GitHub-a yadda saxla
+        run: |
+          git config user.name "RR NEWS AI"
+          git config user.email "actions@github.com"
+
+          git add news.json
+
+          if git diff --cached --quiet; then
+            echo "Yeni xəbər yoxdur."
+          else
+            git commit -m "Auto update Azerbaijan news"
+            git push
+          fi
