@@ -6,7 +6,38 @@
 
 <title>RR NEWS AI</title>
 
-<style>
+<style>.archive-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+    align-items:center;
+}
+
+.archive-controls input,
+.archive-controls button{
+    padding:10px 14px;
+    border:1px solid #ddd;
+    background:white;
+    border-radius:4px;
+}
+
+.archive-controls button{
+    background:#111;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.archive-controls button:hover{
+    background:#e21b23;
+}
+
+#archiveContainer{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
 
 *{
     box-sizing:border-box;
@@ -236,7 +267,7 @@ RR<span>NEWS</span>
 
 <h1>
 Xəbərlər.<br>
-Ağıllı şəkildə.
+Müasir İntellekt Səviyyəsində.
 </h1>
 
 <p>
@@ -288,7 +319,7 @@ Hamısı
 <main id="latest">
 
 <h2>
-🇦🇿 Azərbaycandan son xəbərlər
+Azərbaycandan son xəbərlər
 </h2>
 
 <div id="newsContainer">
@@ -299,6 +330,19 @@ Xəbərlər yüklənir...
 
 </div>
 
+</main><main id="archive">
+    <h2>📚 Xəbər Arxivi</h2>
+
+    <div class="archive-controls">
+        <label for="archiveDate">📅 Tarix seç:</label>
+        <input type="date" id="archiveDate">
+        <button onclick="loadArchive()">Axtar</button>
+        <button onclick="showAllArchive()">Bütün arxiv</button>
+    </div>
+
+    <div id="archiveContainer">
+        <div class="status">Arxiv yüklənir...</div>
+    </div>
 </main>
 
 <main id="about">
@@ -586,7 +630,140 @@ function safeURL(url){
 }
 
 
-loadNews();
+loadNews();async function loadArchive() {
+    const container = document.getElementById("archiveContainer");
+    const selectedDate = document.getElementById("archiveDate").value;
+
+    container.innerHTML =
+        '<div class="status">Arxiv yüklənir...</div>';
+
+    try {
+        const response = await fetch("archive.json?" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("archive.json tapılmadı");
+        }
+
+        const data = await response.json();
+        let articles = data.articles || [];
+
+        if (selectedDate) {
+            articles = articles.filter(article => {
+                if (!article.published) return false;
+
+                const date = new Date(article.published);
+
+                const year = date.getUTCFullYear();
+                const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+                const day = String(date.getUTCDate()).padStart(2, "0");
+
+                return `${year}-${month}-${day}` === selectedDate;
+            });
+        }
+
+        renderArchive(articles);
+
+    } catch (error) {
+        console.error(error);
+
+        container.innerHTML =
+            '<div class="status">Arxivi yükləmək mümkün olmadı.</div>';
+    }
+}
+
+
+function showAllArchive() {
+    document.getElementById("archiveDate").value = "";
+    loadArchive();
+}
+
+
+function renderArchive(articles) {
+    const container =
+        document.getElementById("archiveContainer");
+
+    container.innerHTML = "";
+
+    if (!articles.length) {
+        container.innerHTML =
+            '<div class="status">Bu tarixdə arxiv xəbəri yoxdur.</div>';
+        return;
+    }
+
+    articles.forEach(article => {
+
+        const card = document.createElement("article");
+
+        card.className = "card";
+
+        const imageHTML = article.image
+            ? `
+                <img
+                    src="${safeURL(article.image)}"
+                    alt=""
+                    style="
+                        width:100%;
+                        height:180px;
+                        object-fit:cover;
+                        margin-bottom:15px;
+                    "
+                >
+              `
+            : "";
+
+        let dateText = "";
+
+        if (article.published) {
+            const date = new Date(article.published);
+
+            dateText = date.toLocaleString(
+                "az-AZ",
+                {
+                    dateStyle: "medium",
+                    timeStyle: "short"
+                }
+            );
+        }
+
+        card.innerHTML = `
+            ${imageHTML}
+
+            <div class="category">
+                ${escapeHTML(
+                    article.category || "Azərbaycan"
+                )}
+            </div>
+
+            <h3>
+                ${escapeHTML(
+                    article.title || "Başlıqsız xəbər"
+                )}
+            </h3>
+
+            <p>
+                Mənbə:
+                ${escapeHTML(
+                    article.source || "Naməlum"
+                )}
+            </p>
+
+            <div class="meta">
+                ${escapeHTML(dateText)}
+            </div>
+
+            <a
+                href="${safeURL(article.link)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Ətraflı oxu →
+            </a>
+        `;
+
+        container.appendChild(card);
+    });
+}
+loadArchive();
 
 </script>
 
