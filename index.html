@@ -3,41 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>RR NEWS AI</title>
 
-<style>.archive-controls{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
-    align-items:center;
-}
-
-.archive-controls input,
-.archive-controls button{
-    padding:10px 14px;
-    border:1px solid #ddd;
-    background:white;
-    border-radius:4px;
-}
-
-.archive-controls button{
-    background:#111;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.archive-controls button:hover{
-    background:#e21b23;
-}
-
-#archiveContainer{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:22px;
-}
+<style>
 
 *{
     box-sizing:border-box;
@@ -50,6 +18,8 @@ body{
     background:#f4f4f4;
     color:#111;
 }
+
+/* HEADER */
 
 header{
     background:#111;
@@ -75,12 +45,16 @@ nav a{
     margin-left:20px;
 }
 
+/* BREAKING */
+
 .breaking{
     background:#e21b23;
     color:white;
     padding:12px 7%;
     font-weight:bold;
 }
+
+/* HERO */
 
 .hero{
     background:white;
@@ -101,11 +75,13 @@ nav a{
 }
 
 .hero p{
-    max-width:700px;
+    max-width:750px;
     color:#555;
     font-size:18px;
     line-height:1.6;
 }
+
+/* CATEGORY MENU */
 
 .category-menu{
     display:flex;
@@ -141,6 +117,8 @@ nav a{
     border-color:#e21b23;
 }
 
+/* MAIN */
+
 main{
     padding:40px 7%;
     max-width:1400px;
@@ -153,33 +131,66 @@ h2{
     margin-bottom:25px;
 }
 
-#newsContainer{
+/* NEWS GRID */
+
+#newsContainer,
+#archiveContainer{
     display:grid;
-    grid-template-columns:repeat(
-        auto-fit,
-        minmax(280px,1fr)
-    );
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:22px;
 }
 
+/* CARD */
+
 .card{
     background:#fff;
-    padding:23px;
+    padding:0 0 23px 0;
     border-top:4px solid #e21b23;
     box-shadow:0 3px 12px #00000012;
+    overflow:hidden;
 }
+
+.card-content{
+    padding:20px 23px 0 23px;
+}
+
+.news-image{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+}
+
+.image-placeholder{
+    width:100%;
+    height:210px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#111,#333);
+    color:white;
+    font-size:22px;
+    font-weight:900;
+}
+
+.image-placeholder span{
+    color:#e21b23;
+}
+
+/* CATEGORY */
 
 .category{
     color:#d71920;
     font-size:12px;
     font-weight:bold;
     text-transform:uppercase;
+    margin-bottom:8px;
 }
 
 .card h3{
     font-size:21px;
     margin:10px 0;
-    line-height:1.25;
+    line-height:1.3;
 }
 
 .card p{
@@ -201,11 +212,113 @@ h2{
     text-decoration:none;
 }
 
+.card a:hover{
+    text-decoration:underline;
+}
+
+/* SON HADİSƏLƏR */
+
+.card.major-event{
+    border-top:5px solid #d71920;
+}
+
+.card.major-event h3{
+    font-size:24px;
+}
+
+/* STATUS */
+
 .status{
     text-align:center;
     padding:25px;
     color:#777;
+    background:white;
 }
+
+/* ARCHIVE */
+
+.archive-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+    align-items:center;
+}
+
+.archive-controls input,
+.archive-controls button{
+    padding:10px 14px;
+    border:1px solid #ddd;
+    background:white;
+    border-radius:4px;
+}
+
+.archive-controls button{
+    background:#111;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.archive-controls button:hover{
+    background:#e21b23;
+}
+
+/* EXTRA SERVICES */
+
+.extra-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.extra-card{
+    background:#fff;
+    padding:25px;
+    box-shadow:0 3px 12px #00000012;
+    border-top:4px solid #111;
+}
+
+.extra-card h3{
+    margin-bottom:10px;
+}
+
+.extra-card p{
+    color:#666;
+    line-height:1.5;
+}
+
+/* LIVE */
+
+.live-box{
+    background:#111;
+    color:white;
+    padding:35px;
+    text-align:center;
+    border-radius:6px;
+}
+
+.live-box h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.live-box p{
+    color:#bbb;
+    margin-bottom:20px;
+}
+
+.live-button{
+    display:inline-block;
+    background:#e21b23;
+    color:white;
+    padding:12px 22px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:4px;
+}
+
+/* FOOTER */
 
 footer{
     background:#111;
@@ -214,6 +327,8 @@ footer{
     padding:30px;
     margin-top:30px;
 }
+
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -236,6 +351,10 @@ footer{
         white-space:nowrap;
     }
 
+    .hero h1{
+        font-size:46px;
+    }
+
 }
 
 </style>
@@ -245,132 +364,269 @@ footer{
 
 <header>
 
-<div class="logo">
-RR<span>NEWS</span>
-<small style="font-size:11px;color:#aaa">AI</small>
-</div>
+    <div class="logo">
+        RR<span>NEWS</span>
+        <small style="font-size:11px;color:#aaa">AI</small>
+    </div>
 
-<nav>
-<a href="#latest">Son xəbərlər</a>
-<a href="#about">Haqqımızda</a>
-</nav>
+    <nav>
+        <a href="#latest">Son xəbərlər</a>
+        <a href="#archive">Arxiv</a>
+        <a href="#about">Haqqımızda</a>
+    </nav>
 
 </header>
 
+
 <div class="breaking">
-🔴Dəqiq Xəbərlər &nbsp; | &nbsp; AZƏRBAYCAN
+    🔴 DƏQİQ XƏBƏRLƏR &nbsp; | &nbsp; AZƏRBAYCAN
 </div>
+
 
 <section class="hero">
 
-<small>RR NEWS AI</small>
+    <small>RR NEWS AI</small>
 
-<h1>
-Xəbərlər.<br>
-Müasir İntellekt Səviyyəsində.
-</h1>
+    <h1>
+        Xəbərlər.<br>
+        Müasir İntellekt Səviyyəsində.
+    </h1>
 
-<p>
-Azərbaycanda və dünyada baş verən hadisələri
-mənbələrdən toplayan və tarixə görə təşkil edən
-müasir xəbər platforması.
-</p>
+    <p>
+        Azərbaycanda və dünyada baş verən hadisələri
+        müxtəlif mənbələrdən toplayan, süni intellekt
+        vasitəsilə kateqoriyalara ayıran və tarix üzrə
+        arxivləşdirən müasir xəbər platforması.
+    </p>
 
 </section>
 
-<!-- KATEQORİYA MENYUSU -->
+
+<!-- KATEQORİYALAR -->
 
 <div class="category-menu">
 
-<button class="active" onclick="filterNews('all')">
-Hamısı
-</button>
+    <button class="active" onclick="filterNews('all')">
+        📰 Hamısı
+    </button>
 
-<button onclick="filterNews('Azərbaycan')">
-🇦🇿 Azərbaycan
-</button>
+    <button onclick="filterNews('Azərbaycan')">
+        🇦🇿 Azərbaycan
+    </button>
 
-<button onclick="filterNews('Hadisə')">
-🚨 Hadisə
-</button>
+    <button onclick="filterNews('Son Hadisələr')">
+        🚨 Son Hadisələr
+    </button>
 
-<button onclick="filterNews('Siyasət')">
-🏛️ Siyasət
-</button>
+    <button onclick="filterNews('Siyasət')">
+        🏛️ Siyasət
+    </button>
 
-<button onclick="filterNews('İqtisadiyyat')">
-💰 İqtisadiyyat
-</button>
+    <button onclick="filterNews('İqtisadiyyat')">
+        💰 İqtisadiyyat
+    </button>
 
-<button onclick="filterNews('Texnologiya')">
-💻 Texnologiya
-</button>
+    <button onclick="filterNews('Texnologiya')">
+        🤖 Texnologiya
+    </button>
 
-<button onclick="filterNews('İdman')">
-⚽ İdman
-</button>
+    <button onclick="filterNews('İdman')">
+        ⚽ İdman
+    </button>
 
-<button onclick="filterNews('Cəmiyyət')">
-👥 Cəmiyyət
-</button>
+    <button onclick="filterNews('Cəmiyyət')">
+        👥 Cəmiyyət
+    </button>
+
+    <button onclick="filterNews('Hərb')">
+        ⚔️ Hərb
+    </button>
+
+    <button onclick="filterNews('Səhiyyə')">
+        🏥 Səhiyyə
+    </button>
+
+    <button onclick="filterNews('Elm')">
+        🔬 Elm
+    </button>
+
+    <button onclick="filterNews('Ekologiya')">
+        🌍 Ekologiya
+    </button>
+
+    <button onclick="filterNews('Mədəniyyət')">
+        🎭 Mədəniyyət
+    </button>
+
+    <button onclick="filterNews('Nəqliyyat')">
+        🚗 Nəqliyyat
+    </button>
+
+    <button onclick="filterNews('Live')">
+        🔴 Live
+    </button>
+
+    <button onclick="filterNews('Kriminal')">
+        ⛓️ Kriminal
+    </button>
 
 </div>
+
+
+<!-- SON XƏBƏRLƏR -->
 
 <main id="latest">
 
-<h2>
-Azərbaycandan son xəbərlər
-</h2>
+    <h2>🇦🇿 Azərbaycandan və dünyadan son xəbərlər</h2>
 
-<div id="newsContainer">
+    <div id="newsContainer">
 
-<div class="status">
-Xəbərlər yüklənir...
-</div>
+        <div class="status">
+            Xəbərlər yüklənir...
+        </div>
 
-</div>
+    </div>
 
-</main><main id="archive">
+</main>
+
+
+<!-- ARXİV -->
+
+<main id="archive">
+
     <h2>📚 Xəbər Arxivi</h2>
 
     <div class="archive-controls">
-        <label for="archiveDate">📅 Tarix seç:</label>
+
+        <label for="archiveDate">
+            📅 Tarix seç:
+        </label>
+
         <input type="date" id="archiveDate">
-        <button onclick="loadArchive()">Axtar</button>
-        <button onclick="showAllArchive()">Bütün arxiv</button>
+
+        <button onclick="loadArchive()">
+            🔎 Axtar
+        </button>
+
+        <button onclick="showAllArchive()">
+            📚 Bütün arxiv
+        </button>
+
     </div>
 
     <div id="archiveContainer">
-        <div class="status">Arxiv yüklənir...</div>
+
+        <div class="status">
+            Arxiv yüklənir...
+        </div>
+
     </div>
+
 </main>
+
+
+<!-- ƏLAVƏ XİDMƏTLƏR -->
+
+<main id="services">
+
+    <h2>🌐 RR NEWS AI Xidmətləri</h2>
+
+    <div class="extra-grid">
+
+        <div class="extra-card">
+
+            <h3>🌤️ Hava Proqnozu</h3>
+
+            <p>
+                Azərbaycanda şəhərlər üzrə hava
+                proqnozu bölməsi hazırlanır.
+            </p>
+
+        </div>
+
+
+        <div class="extra-card">
+
+            <h3>💱 Valyuta Məzənnələri</h3>
+
+            <p>
+                AZN, USD, EUR və digər əsas valyutaların
+                məzənnələri burada göstəriləcək.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- LIVE -->
+
+<main id="live">
+
+    <h2>🔴 RR NEWS LIVE</h2>
+
+    <div class="live-box">
+
+        <h3>RR NEWS Canlı</h3>
+
+        <p>
+            Canlı yayım bölməsi. RR NEWS kanalının
+            canlı yayımı burada yerləşdiriləcək.
+        </p>
+
+        <a class="live-button" href="#">
+            🔴 CANLI YAYIMA KEÇ
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- HAQQIMIZDA -->
 
 <main id="about">
 
-<h2>
-RR NEWS AI
-</h2>
+    <h2>RR NEWS AI</h2>
 
-<div class="card">
+    <div class="card">
 
-<p>
-RR NEWS AI inkişaf etdirilən avtomatlaşdırılmış
-xəbər platformasıdır. Məqsəd müxtəlif xəbər
-mənbələrindən məlumatları toplamaq, kateqoriyalara
-ayırmaq və oxucuya mənbə keçidi ilə təqdim etməkdir.
-</p>
+        <div class="card-content">
 
-</div>
+            <p>
+                RR NEWS AI inkişaf etdirilən
+                avtomatlaşdırılmış xəbər platformasıdır.
+                Məqsəd müxtəlif xəbər mənbələrindən
+                məlumatları toplamaq, süni intellekt
+                vasitəsilə kateqoriyalara ayırmaq,
+                tarixə görə arxivləşdirmək və oxucuya
+                mənbə keçidi ilə təqdim etməkdir.
+            </p>
+
+        </div>
+
+    </div>
 
 </main>
 
+
 <footer>
 
-© 2026 RR NEWS AI — News • Technology • Future
+    © 2026 RR NEWS AI — News • Technology • Future
 
 </footer>
 
+
 <script>
+
+/* =========================
+   XƏBƏRLƏR
+========================= */
+
+let allNews = [];
+
 
 async function loadNews(){
 
@@ -393,12 +649,11 @@ async function loadNews(){
         const data =
             await response.json();
 
+        allNews = data.articles || [];
+
         container.innerHTML = "";
 
-        if(
-            !data.articles ||
-            data.articles.length === 0
-        ){
+        if(allNews.length === 0){
 
             container.innerHTML =
                 '<div class="status">' +
@@ -406,73 +661,16 @@ async function loadNews(){
                 '</div>';
 
             return;
+
         }
 
-        data.articles.forEach(article => {
+        allNews.forEach(article => {
 
-            const card =
-                document.createElement("article");
-
-            card.className = "card";
-
-            /*
-             * Kateqoriyanı kartın özünə
-             * bağlayırıq.
-             */
-
-            const category =
-                article.category ||
-                "Azərbaycan";
-
-            card.dataset.category =
-                category;
-
-            card.innerHTML = `
-
-                <div class="category">
-                    ${escapeHTML(category)}
-                </div>
-
-                <h3>
-                    ${escapeHTML(
-                        article.title ||
-                        "Başlıqsız xəbər"
-                    )}
-                </h3>
-
-                <p>
-                    Mənbə:
-                    ${escapeHTML(
-                        article.source ||
-                        "Naməlum"
-                    )}
-                </p>
-
-                <div class="meta">
-                    ${escapeHTML(
-                        article.published ||
-                        ""
-                    )}
-                </div>
-
-                <a
-                    href="${safeURL(article.link)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Ətraflı oxu →
-                </a>
-
-            `;
-
-            container.appendChild(card);
+            container.appendChild(
+                createNewsCard(article)
+            );
 
         });
-
-        /*
-         * Xəbərlər yükləndikdən sonra
-         * bütün xəbərləri göstər.
-         */
 
         filterNews("all");
 
@@ -492,41 +690,147 @@ async function loadNews(){
 }
 
 
+/* =========================
+   XƏBƏR KARTI
+========================= */
+
+function createNewsCard(article){
+
+    const card =
+        document.createElement("article");
+
+    card.className = "card";
+
+    const category =
+        article.category || "Azərbaycan";
+
+    card.dataset.category =
+        category;
+
+
+    if(category === "Son Hadisələr"){
+
+        card.classList.add(
+            "major-event"
+        );
+
+    }
+
+
+    let imageHTML = "";
+
+
+    if(article.image){
+
+        const imageURL =
+            safeURL(article.image);
+
+        if(imageURL !== "#"){
+
+            imageHTML = `
+                <img
+                    class="news-image"
+                    src="${imageURL}"
+                    alt="${escapeHTML(article.title || "")}"
+                    loading="lazy"
+                >
+            `;
+
+        }
+
+    }
+
+
+    if(!imageHTML){
+
+        imageHTML = `
+            <div class="image-placeholder">
+                RR <span>NEWS</span> AI
+            </div>
+        `;
+
+    }
+
+
+    const dateText =
+        formatDate(article.published);
+
+
+    card.innerHTML = `
+
+        ${imageHTML}
+
+        <div class="card-content">
+
+            <div class="category">
+                ${categoryIcon(category)}
+                ${escapeHTML(category)}
+            </div>
+
+            <h3>
+                ${escapeHTML(
+                    article.title ||
+                    "Başlıqsız xəbər"
+                )}
+            </h3>
+
+            <p>
+                Mənbə:
+                ${escapeHTML(
+                    article.source ||
+                    "Naməlum"
+                )}
+            </p>
+
+            <div class="meta">
+                ${escapeHTML(dateText)}
+            </div>
+
+            <a
+                href="${safeURL(article.link)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Ətraflı oxu →
+            </a>
+
+        </div>
+
+    `;
+
+    return card;
+
+}
+
+
+/* =========================
+   KATEQORİYA FİLTRİ
+========================= */
+
 function filterNews(category){
 
     const cards =
-        document.querySelectorAll(".card");
+        document.querySelectorAll(
+            "#newsContainer .card"
+        );
+
 
     cards.forEach(card => {
-
-        /*
-         * "all" seçilibsə bütün xəbərləri göstər.
-         */
-
-        if(category === "all"){
-
-            card.style.display = "";
-
-            return;
-        }
-
-        /*
-         * Xəbərin kateqoriyasını oxu.
-         */
 
         const cardCategory =
             card.dataset.category || "";
 
-        /*
-         * Uyğundursa göstər,
-         * deyilsə gizlət.
-         */
 
-        if(cardCategory === category){
+        if(
+            category === "all" ||
+            cardCategory === category
+        ){
 
             card.style.display = "";
 
-        }else{
+        }
+
+        else{
 
             card.style.display = "none";
 
@@ -534,10 +838,6 @@ function filterNews(category){
 
     });
 
-
-    /*
-     * Aktiv düyməni dəyiş.
-     */
 
     document
         .querySelectorAll(
@@ -549,16 +849,26 @@ function filterNews(category){
                 "active"
             );
 
-            const buttonText =
+        });
+
+
+    document
+        .querySelectorAll(
+            ".category-menu button"
+        )
+        .forEach(button => {
+
+            const text =
                 button.textContent.trim();
+
 
             if(
                 (category === "all" &&
-                 buttonText.includes("Hamısı"))
+                text.includes("Hamısı"))
                 ||
                 (
                     category !== "all" &&
-                    buttonText.includes(category)
+                    text.includes(category)
                 )
             ){
 
@@ -570,40 +880,129 @@ function filterNews(category){
 
         });
 
+
+    /* Live ayrıca bölməyə aparır */
+
+    if(category === "Live"){
+
+        document
+            .getElementById("live")
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+    }
+
 }
 
+
+/* =========================
+   KATEQORİYA İŞARƏLƏRİ
+========================= */
+
+function categoryIcon(category){
+
+    const icons = {
+
+        "Azərbaycan":"🇦🇿",
+
+        "Son Hadisələr":"🚨",
+
+        "Siyasət":"🏛️",
+
+        "İqtisadiyyat":"💰",
+
+        "Texnologiya":"🤖",
+
+        "İdman":"⚽",
+
+        "Cəmiyyət":"👥",
+
+        "Hərb":"⚔️",
+
+        "Səhiyyə":"🏥",
+
+        "Elm":"🔬",
+
+        "Ekologiya":"🌍",
+
+        "Mədəniyyət":"🎭",
+
+        "Nəqliyyat":"🚗",
+
+        "Live":"🔴",
+
+        "Kriminal":"⛓️"
+
+    };
+
+    return icons[category] || "📰";
+
+}
+
+
+/* =========================
+   TARİX
+========================= */
+
+function formatDate(value){
+
+    if(!value){
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if(isNaN(date.getTime())){
+
+        return String(value);
+
+    }
+
+
+    return date.toLocaleString(
+        "az-AZ",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric",
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/* =========================
+   HTML TƏHLÜKƏSİZLİYİ
+========================= */
 
 function escapeHTML(text){
 
     return String(text)
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+        .replace(/&/g,"&amp;")
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+        .replace(/</g,"&lt;")
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+        .replace(/>/g,"&gt;")
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+        .replace(/"/g,"&quot;")
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/'/g,"&#039;");
 
 }
 
+
+/* =========================
+   URL TƏHLÜKƏSİZLİYİ
+========================= */
 
 function safeURL(url){
 
@@ -630,139 +1029,181 @@ function safeURL(url){
 }
 
 
-loadNews();async function loadArchive() {
-    const container = document.getElementById("archiveContainer");
-    const selectedDate = document.getElementById("archiveDate").value;
+/* =========================
+   ARXİV
+========================= */
+
+async function loadArchive(){
+
+    const container =
+        document.getElementById(
+            "archiveContainer"
+        );
+
+    const selectedDate =
+        document.getElementById(
+            "archiveDate"
+        ).value;
+
 
     container.innerHTML =
-        '<div class="status">Arxiv yüklənir...</div>';
+        '<div class="status">' +
+        'Arxiv yüklənir...' +
+        '</div>';
 
-    try {
-        const response = await fetch("archive.json?" + Date.now());
 
-        if (!response.ok) {
-            throw new Error("archive.json tapılmadı");
+    try{
+
+        const response =
+            await fetch(
+                "archive.json?" +
+                Date.now()
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "archive.json tapılmadı"
+            );
+
         }
 
-        const data = await response.json();
-        let articles = data.articles || [];
 
-        if (selectedDate) {
-            articles = articles.filter(article => {
-                if (!article.published) return false;
+        const data =
+            await response.json();
 
-                const date = new Date(article.published);
 
-                const year = date.getUTCFullYear();
-                const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-                const day = String(date.getUTCDate()).padStart(2, "0");
+        let articles =
+            data.articles || [];
 
-                return `${year}-${month}-${day}` === selectedDate;
-            });
+
+        if(selectedDate){
+
+            articles =
+                articles.filter(
+                    article => {
+
+                        if(
+                            !article.published
+                        ){
+
+                            return false;
+
+                        }
+
+
+                        const date =
+                            new Date(
+                                article.published
+                            );
+
+
+                        const year =
+                            date.getUTCFullYear();
+
+
+                        const month =
+                            String(
+                                date.getUTCMonth()+1
+                            ).padStart(2,"0");
+
+
+                        const day =
+                            String(
+                                date.getUTCDate()
+                            ).padStart(2,"0");
+
+
+                        return (
+                            `${year}-${month}-${day}`
+                            ===
+                            selectedDate
+                        );
+
+                    }
+                );
+
         }
+
 
         renderArchive(articles);
 
-    } catch (error) {
+    }
+
+    catch(error){
+
         console.error(error);
 
         container.innerHTML =
-            '<div class="status">Arxivi yükləmək mümkün olmadı.</div>';
+            '<div class="status">' +
+            'Arxivi yükləmək mümkün olmadı.' +
+            '</div>';
+
     }
+
 }
 
 
-function showAllArchive() {
-    document.getElementById("archiveDate").value = "";
+/* =========================
+   BÜTÜN ARXİV
+========================= */
+
+function showAllArchive(){
+
+    document.getElementById(
+        "archiveDate"
+    ).value = "";
+
     loadArchive();
+
 }
 
 
-function renderArchive(articles) {
+/* =========================
+   ARXİV GÖSTƏR
+========================= */
+
+function renderArchive(articles){
+
     const container =
-        document.getElementById("archiveContainer");
+        document.getElementById(
+            "archiveContainer"
+        );
+
 
     container.innerHTML = "";
 
-    if (!articles.length) {
+
+    if(!articles.length){
+
         container.innerHTML =
-            '<div class="status">Bu tarixdə arxiv xəbəri yoxdur.</div>';
+            '<div class="status">' +
+            'Bu tarixdə arxiv xəbəri yoxdur.' +
+            '</div>';
+
         return;
+
     }
+
 
     articles.forEach(article => {
 
-        const card = document.createElement("article");
+        container.appendChild(
+            createNewsCard(article)
+        );
 
-        card.className = "card";
-
-        const imageHTML = article.image
-            ? `
-                <img
-                    src="${safeURL(article.image)}"
-                    alt=""
-                    style="
-                        width:100%;
-                        height:180px;
-                        object-fit:cover;
-                        margin-bottom:15px;
-                    "
-                >
-              `
-            : "";
-
-        let dateText = "";
-
-        if (article.published) {
-            const date = new Date(article.published);
-
-            dateText = date.toLocaleString(
-                "az-AZ",
-                {
-                    dateStyle: "medium",
-                    timeStyle: "short"
-                }
-            );
-        }
-
-        card.innerHTML = `
-            ${imageHTML}
-
-            <div class="category">
-                ${escapeHTML(
-                    article.category || "Azərbaycan"
-                )}
-            </div>
-
-            <h3>
-                ${escapeHTML(
-                    article.title || "Başlıqsız xəbər"
-                )}
-            </h3>
-
-            <p>
-                Mənbə:
-                ${escapeHTML(
-                    article.source || "Naməlum"
-                )}
-            </p>
-
-            <div class="meta">
-                ${escapeHTML(dateText)}
-            </div>
-
-            <a
-                href="${safeURL(article.link)}"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Ətraflı oxu →
-            </a>
-        `;
-
-        container.appendChild(card);
     });
+
 }
+
+
+/* =========================
+   BAŞLAT
+========================= */
+
+loadNews();
+
 loadArchive();
 
 </script>
