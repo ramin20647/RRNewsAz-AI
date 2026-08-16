@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T23:45:50.041641+00:00",
+  "updated": "2026-08-16T01:24:27.948075+00:00",
   "country": "Azerbaijan",
   "articles": [
     {
@@ -43,16 +43,6 @@
       "country": "Azerbaijan"
     },
     {
-      "title_original": "Ильхам Алиев поблагодарил президента Ирана за теплые слова об Азербайджане - Baku.ws",
-      "title": "İlham Əliyev Azərbaycanla bağlı xoş sözlərə görə İran prezidentinə təşəkkür edib - Baku.ws",
-      "language": "az",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUEpNeW1LU3h5VW1zMVpRVk9TbmE1ZkdHMkhPdk00dlEtV1BoRTBrSHRtYjdiLVhFNVRPM0VObkw5dlBTS2dicmJSNkFENHJ4ZGNTSmU5dlBMckhhdmp4TlN2MndBQWViU1B6R1ktdEVtVS1nSEt3Wnc1cjVXQ1FGM1pZNkxFS1JQa1haLXdrbU1QZEJwMkgwanM3UnpLbEY0NDdVOA?oc=5",
-      "source": "Google News - Azərbaycan",
-      "published": "Mon, 10 Aug 2026 07:56:00 GMT",
-      "category": "Siyasət",
-      "country": "Azerbaijan"
-    },
-    {
       "title_original": "НКО Azərbaycan Evro-Kredit объявила о ликвидации - Fineko/abc.az",
       "title": "NPO Azərbaycan Evro-Kredit ləğv olunduğunu elan edib - Fineko/abc.az",
       "language": "az",
@@ -60,6 +50,16 @@
       "source": "Google News - Azərbaycan",
       "published": "Fri, 07 Aug 2026 06:42:00 GMT",
       "category": "Azərbaycan",
+      "country": "Azerbaijan"
+    },
+    {
+      "title_original": "Ильхам Алиев поблагодарил президента Ирана за теплые слова об Азербайджане - Baku.ws",
+      "title": "İlham Əliyev Azərbaycanla bağlı xoş sözlərə görə İran prezidentinə təşəkkür edib - Baku.ws",
+      "language": "az",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUEpNeW1LU3h5VW1zMVpRVk9TbmE1ZkdHMkhPdk00dlEtV1BoRTBrSHRtYjdiLVhFNVRPM0VObkw5dlBTS2dicmJSNkFENHJ4ZGNTSmU5dlBMckhhdmp4TlN2MndBQWViU1B6R1ktdEVtVS1nSEt3Wnc1cjVXQ1FGM1pZNkxFS1JQa1haLXdrbU1QZEJwMkgwanM3UnpLbEY0NDdVOA?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "Mon, 10 Aug 2026 07:56:00 GMT",
+      "category": "Siyasət",
       "country": "Azerbaijan"
     },
     {
@@ -94,17 +94,17 @@
     },
     {
       "title_original": "На страницах Алиева в соцсетях размещена публикация в связи с кончиной Наримана Гасанзаде - Caliber.Az",
-      "title": "Əliyevin sosial şəbəkədəki səhifəsində Nəriman Həsənzadənin ölümü ilə bağlı yazı yerləşdirilib - Caliber.Az",
+      "title": "Əliyevin sosial şəbəkədəki səhifəsində Nəriman Həsənzadənin vəfatı ilə bağlı yazı yerləşdirilib - Caliber.Az",
       "language": "az",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNREdkVEJQSUZoZWlQci1LV3dLU2U4VFhEWW5PMDVkTmM0cmpQM0ktVzFLN2tQNDh6cjA0Q3lqT0JJSkszdWdieTlxNUxfNmhDaDlSTDJnUHFPeUVyVjVqbm12QnRWSlY3eEcxdzZvRnU3SkFjY2hnU2ZtWjFlV3JDdmRRaGtaVjVQYlF0a0o4SGpMS1BQMmRNangyUU95Q01BVUxvX05yRGR6RHlxTk00TWtDWUkteHN5NkE?oc=5",
       "source": "Google News - Azərbaycan",
       "published": "Sat, 01 Aug 2026 17:30:45 GMT",
-      "category": "Azərbaycan",
+      "category": "Hadisə",
       "country": "Azerbaijan"
     },
     {
       "title_original": "McDonald's Azərbaycan отметили День защиты детей вместе с детьми шехидов и ветеранов - 1News.az",
-      "title": "McDonald's Azərbaycan Uşaqlar Gününü şəhid və veteran övladları ilə birlikdə qeyd etdi - 1News.az",
+      "title": "McDonald's Azərbaycan Uşaqlar Gününü şəhid və veteran övladları ilə birlikdə qeyd edib - 1News.az",
       "language": "az",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNb1VYZXQwdVhSWHh2bXhDaHRnTTVLSHY0dnNtY3ctUUhDbFctaXphT21JaVJlUFpYdTlPZDBCS1lPRHFIX3pyZDRXSFNucmtObWl2Yk9EN1BHLVplTjZXVFVOSGRxX2FQeGVyc21xa1BETmMzYjQ3c1pYckhKWXpPd2NnRFBrOHRSenllazVFQ09XSDE3cDNvem9EbGhFTGFZb0lYdmNBRXRTUFNucXpWRmx1NVZPNkE3M1RrMUljMlY3RkF5?oc=5",
       "source": "Google News - Azərbaycan",
@@ -174,11 +174,21 @@
     },
     {
       "title_original": "McDonald's Azərbaycan передал медицинское оборудование реабилитационному центру «Uşaqların Sağlam Gələcəyi» - ФОТО - 1News.az",
-      "title": "McDonald's Azerbaijan şirkəti \"Uşakların Sağlam Gələcəyi\" reabilitasiya mərkəzinə tibbi avadanlıqlar təhvil verib - FOTO - 1News.az",
+      "title": "McDonald's Azərbaycan şirkəti \"Uşakların Sağlam Gələcəyi\" reabilitasiya mərkəzinə tibbi avadanlıqlar təhvil verib - FOTO - 1News.az",
       "language": "az",
       "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPclZjaGltWng2eTJtWHRZenJOaVNfLXdZM3dQWW95MncwX21teHM5RGdGeVIzVE90ZmJPUzFjSFY3alZTenhYX2RhSEtRa0JHbld1Z1Z0bzRMUFF5ZXhqUGFxVDQ3M3hUcWhadWg1WmRoRzUzQ3ItVTNYeVR5WHZhc1kxbWtmeVNtbnNDZWJJdFhSTll2bjZLNFlQdm5rNGM2TThtY2pjRXgzYTlZcXhrTnZKaWdvckJlMkxmNzBjTzNKc244OWYwV1pPc1ZMQ09LZEtWbWJEYlY5NGwya21oajlSU09ZalJpMkE?oc=5",
       "source": "Google News - Azərbaycan",
       "published": "Tue, 26 May 2026 07:00:00 GMT",
+      "category": "Azərbaycan",
+      "country": "Azerbaijan"
+    },
+    {
+      "title_original": "Subway Azərbaycan организовал посещение вечера КВН для детей из семей шехидов и ветеранов - ФОТО - ВИДЕО - 1News.az",
+      "title": "“Metro Azərbaycan” şəhid ailələri və veteranların uşaqları üçün KVN gecəsi təşkil edib - FOTO - VİDEO - 1News.az",
+      "language": "az",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOWnRRcXFZMFd2TlVsaUdHdzlVT2dXbGFNMXhrcjdwbEFPSmhMRnB0VGZCbVlORm9CQ3pKdlJhdTNCYm9hS1FBQXZYSjZyTlc2bWFkX3RYT1RIYk9VR0pKdkhjNGQzMXEyWkR6WjR2Z0hYdU91emVHYXp0cXk1U0dLb0RJR2hmZnM3N2FsY3AxWGthbEQyT19BUHlHemxWVi1rZG1VbUs3RkZ2S1d5Vm5DMThaTDJDQ3JjeS0xa1Iybll0RVdtMjVpbllYU1d4cWpFLTE3SlpxWDBoZ0RCd0hj?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "Sat, 30 May 2026 07:00:00 GMT",
       "category": "Texnologiya",
       "country": "Azerbaijan"
     },
@@ -190,16 +200,6 @@
       "source": "Google News - Azərbaycan",
       "published": "Mon, 10 Aug 2026 07:42:00 GMT",
       "category": "Siyasət",
-      "country": "Azerbaijan"
-    },
-    {
-      "title_original": "Subway Azərbaycan организовал посещение вечера КВН для детей из семей шехидов и ветеранов - ФОТО - ВИДЕО - 1News.az",
-      "title": "“Metro Azərbaycan” şəhid ailələri və veteranların uşaqları üçün KVN gecəsi təşkil edib - FOTO - VİDEO - 1News.az",
-      "language": "az",
-      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOWnRRcXFZMFd2TlVsaUdHdzlVT2dXbGFNMXhrcjdwbEFPSmhMRnB0VGZCbVlORm9CQ3pKdlJhdTNCYm9hS1FBQXZYSjZyTlc2bWFkX3RYT1RIYk9VR0pKdkhjNGQzMXEyWkR6WjR2Z0hYdU91emVHYXp0cXk1U0dLb0RJR2hmZnM3N2FsY3AxWGthbEQyT19BUHlHemxWVi1rZG1VbUs3RkZ2S1d5Vm5DMThaTDJDQ3JjeS0xa1Iybll0RVdtMjVpbllYU1d4cWpFLTE3SlpxWDBoZ0RCd0hj?oc=5",
-      "source": "Google News - Azərbaycan",
-      "published": "Sat, 30 May 2026 07:00:00 GMT",
-      "category": "Texnologiya",
       "country": "Azerbaijan"
     },
     {
@@ -223,16 +223,6 @@
       "country": "Azerbaijan"
     },
     {
-      "title_original": "Доходы населения Азербайджана выросли почти на 10 процентов - Operativ Məlumat Mərkəzi",
-      "title": "Azərbaycan əhalisinin gəlirləri təxminən 10 faiz artıb - Operativ Məlumat Mərkəzi",
-      "language": "az",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPQ3h1cjNwY3kxTTU3Wk04RWg3dlNVT3dyQmhldlNsV01QUUhyNWE3V3BzakVyU3l6SFlxTHJZWlNUTHYyTFM0aW1MS3dQYmZ5MGItUEhYVHZGOHNicEU2OHZ1V3hVR3lvMGtHb2hYVmFuVXQwNnhsNEhvcmRSclM0VW9zNW9GbXFOQW14dWlDNzViMEgzWTJYTEVfc25kLVZBY3c?oc=5",
-      "source": "Google News - Azərbaycan",
-      "published": "Mon, 10 Aug 2026 11:27:00 GMT",
-      "category": "Texnologiya",
-      "country": "Azerbaijan"
-    },
-    {
       "title_original": "“Azərbaycan Respublikasının Xarici İşlər Nazirliyi ilə Fələstin Dövlətinin Xarici İşlər Nazirliyi arasında Fələstin Dövlətinin Azərbaycan Respublikasındakı Səfirliyinə maliyyə yardımının göstərilməsi barədə Protokol”un təsdiq edilməsi haqqında Azərbaycan Resp - President.az",
       "title": "“Azərbaycan Respublikasının Xarici İşlər Nazirliyi ilə Fələstin Dövlətinin Xarici İşlər Nazirliyi arasında Fələstin Dövlətinin Azərbaycan Respublikasındakı Səfirliyinə maliyyə yardımının göstərilməsi barədə Protokol”un təsdiq edilməsi haqqında Azərbaycan Resp - President.az",
       "language": "az",
@@ -240,6 +230,16 @@
       "source": "Google News - Azərbaycan",
       "published": "Mon, 03 Aug 2026 09:10:06 GMT",
       "category": "Siyasət",
+      "country": "Azerbaijan"
+    },
+    {
+      "title_original": "Доходы населения Азербайджана выросли почти на 10 процентов - Operativ Məlumat Mərkəzi",
+      "title": "Azərbaycan əhalisinin gəlirləri təxminən 10 faiz artıb - Operativ Məlumat Mərkəzi",
+      "language": "az",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPQ3h1cjNwY3kxTTU3Wk04RWg3dlNVT3dyQmhldlNsV01QUUhyNWE3V3BzakVyU3l6SFlxTHJZWlNUTHYyTFM0aW1MS3dQYmZ5MGItUEhYVHZGOHNicEU2OHZ1V3hVR3lvMGtHb2hYVmFuVXQwNnhsNEhvcmRSclM0VW9zNW9GbXFOQW14dWlDNzViMEgzWTJYTEVfc25kLVZBY3c?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "Mon, 10 Aug 2026 11:27:00 GMT",
+      "category": "Texnologiya",
       "country": "Azerbaijan"
     },
     {
