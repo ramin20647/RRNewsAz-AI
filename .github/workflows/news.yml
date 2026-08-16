@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Repository-ni yüklə
         uses: actions/checkout@v4
 
@@ -26,18 +25,15 @@ jobs:
         run: |
           pip install feedparser deep-translator
 
-      - name: Azərbaycan xəbərlərini topla və tərcümə et
+      - name: Xəbərləri topla və arxivlə
         run: |
           python <<'PY'
-
           import feedparser
           import json
+          import os
           import time
-          from datetime import datetime, timezone
+          from datetime import datetime, timezone, timedelta
           from deep_translator import GoogleTranslator
-
-
-          # XƏBƏR MƏNBƏLƏRİ
 
           feeds = [
               {
@@ -50,449 +46,613 @@ jobs:
               }
           ]
 
-
-          # TƏRCÜMƏ
+          NOW = datetime.now(timezone.utc)
+          CUTOFF = NOW - timedelta(hours=24)
 
           translator = GoogleTranslator(
               source="auto",
               target="az"
           )
 
-
-          # KATEQORİYA MÜƏYYƏNLƏŞDİRMƏ
-
-          def detect_category(title):
-
-              t = title.lower()
-
-
-              # ⚽ İDMAN
-              # ƏN YÜKSƏK PRIORITET
-
-              if any(x in t for x in [
-
-                  "futbol",
-                  "football",
-                  "basketbol",
-                  "basketball",
-                  "voleybol",
-                  "volleyball",
-                  "tennis",
-                  "formula 1",
-                  "formula one",
-                  "ufc",
-                  "boks",
-                  "box",
-                  "güləş",
-                  "cüdo",
-                  "judo",
-                  "atletika",
-                  "olimpiya",
-                  "çempionat",
-                  "championship",
-                  "premyer liqa",
-                  "premier league",
-                  "liqa",
-                  "liga",
-                  "matç",
-                  "match",
-                  "milli komanda",
-                  "klub",
-                  "transfer",
-                  "qalib",
-                  "məğlub",
-                  "oyunçu",
-                  "futbolçu",
-                  "məşqçi",
-                  "stadion",
-                  "qol",
-                  "qələbə",
-                  "məğlubiyyət",
-                  "idman"
-
-              ]):
-                  return "İdman"
-
-
-              # 🚨 HADİSƏ
-
-              if any(x in t for [
-
-                  "qəza",
-                  "avtoqəza",
-                  "toqquşma",
-                  "yanğın",
-                  "partlayış",
-                  "cinayət",
-                  "qətl",
-                  "öldürüldü",
-                  "həbs edildi",
-                  "saxlanıldı",
-                  "xəsarət",
-                  "yaralanıb",
-                  "vəfat edib",
-                  "həlak olub",
-                  "itkin düşüb",
-                  "xilas edildi",
-                  "fövqəladə",
-                  "hadisə",
-                  "polis",
-                  "prokurorluq",
-
-                  "авария",
-                  "пожар",
-                  "взрыв",
-                  "арест",
-                  "полиция"
-
-              ]):
-                  return "Hadisə"
-
-
-              # 🏛️ SİYASƏT
-              # İQTİSADİYYATDAN ƏVVƏL YOXLANIR
-
-              if any(x in t for [
-
-                  "prezident",
-                  "prezidentin",
-                  "prezidentlə",
-                  "ilham əliyev",
-                  "nazir",
-                  "nazirlik",
-                  "baş nazir",
-                  "parlament",
-                  "millət vəkili",
-                  "deputat",
-                  "hökumət",
-                  "siyasi",
-                  "siyasət",
-                  "seçki",
-                  "referendum",
-                  "dövlət başçısı",
-                  "diplomatiya",
-                  "səfir",
-                  "səfirlik",
-                  "görüş keçirib",
-                  "danışıqlar",
-                  "qanun layihəsi",
-                  "qərar qəbul etdi",
-
-                  "президент",
-                  "министр",
-                  "парламент",
-                  "правительство",
-                  "выборы",
-                  "политика",
-                  "посол"
-
-              ]):
-                  return "Siyasət"
-
-
-              # 💰 İQTİSADİYYAT
-
-              if any(x in t for [
-
-                  "iqtisadiyyat",
-                  "iqtisadi",
-                  "manat",
-                  "dollar",
-                  "avro",
-                  "valyuta",
-                  "məzənnə",
-                  "bank",
-                  "kredit",
-                  "faiz",
-                  "inflyasiya",
-                  "neft",
-                  "qaz",
-                  "enerji",
-                  "investisiya",
-                  "ixrac",
-                  "idxal",
-                  "vergi",
-                  "gömrük",
-                  "büdcə",
-                  "maaş",
-                  "pensiya",
-                  "əməkhaqqı",
-                  "şirkət",
-                  "səhm",
-                  "birja",
-                  "bazar",
-                  "qiymətlər",
-                  "bahalaşma",
-                  "ucuzlaşma",
-
-                  "экономика",
-                  "доллар",
-                  "банк",
-                  "нефть",
-                  "инвестиции"
-
-              ]):
-                  return "İqtisadiyyat"
-
-
-              # 💻 TEXNOLOGİYA
-
-              if any(x in t for [
-
-                  "texnologiya",
-                  "süni intellekt",
-                  "süni zəka",
-                  "artificial intelligence",
-                  "robot",
-                  "robotika",
-                  "internet",
-                  "smartfon",
-                  "telefon",
-                  "iphone",
-                  "android",
-                  "kompüter",
-                  "komputer",
-                  "proqram",
-                  "software",
-                  "hardware",
-                  "kibertəhlükəsizlik",
-                  "rəqəmsal",
-                  "çip",
-                  "nvidia",
-                  "microsoft",
-                  "google",
-                  "apple",
-                  "openai",
-                  "startup"
-
-              ]):
-                  return "Texnologiya"
-
-
-              # 👥 CƏMİYYƏT
-
-              if any(x in t for [
-
-                  "səhiyyə",
-                  "xəstəxana",
-                  "həkim",
-                  "dərman",
-                  "sağlamlıq",
-                  "təhsil",
-                  "məktəb",
-                  "universitet",
-                  "şagird",
-                  "tələbə",
-                  "müəllim",
-                  "cəmiyyət",
-                  "sosial",
-                  "ailə",
-                  "uşaq",
-                  "gənclər",
-                  "mədəniyyət",
-                  "incəsənət",
-                  "teatr",
-                  "muzey"
-
-              ]):
-                  return "Cəmiyyət"
-
-
-              # 🇦🇿 ÜMUMİ AZƏRBAYCAN
-
-              return "Azərbaycan"
-
-
-          # BAŞLIĞI AZƏRBAYCAN DİLİNƏ ÇEVİR
-
-          def translate_title(title):
+          def load_json(filename):
+              if not os.path.exists(filename):
+                  return {"articles": []}
 
               try:
+                  with open(filename, "r", encoding="utf-8") as f:
+                      return json.load(f)
+              except Exception as e:
+                  print("JSON oxuma xətası:", filename, e)
+                  return {"articles": []}
 
+          def save_json(filename, data):
+              with open(filename, "w", encoding="utf-8") as f:
+                  json.dump(
+                      data,
+                      f,
+                      ensure_ascii=False,
+                      indent=2
+                  )
+
+          def translate_title(title):
+              try:
                   result = translator.translate(title)
 
                   if result:
                       return result.strip()
 
               except Exception as e:
-
-                  print(
-                      "Tərcümə xətası:",
-                      e
-                  )
+                  print("Tərcümə xətası:", e)
 
               return title
 
+          def get_published(item):
+              parsed = (
+                  item.get("published_parsed")
+                  or item.get("updated_parsed")
+              )
 
-          # XƏBƏRLƏR
+              if parsed:
+                  try:
+                      return datetime(
+                          parsed.tm_year,
+                          parsed.tm_mon,
+                          parsed.tm_mday,
+                          parsed.tm_hour,
+                          parsed.tm_min,
+                          parsed.tm_sec,
+                          tzinfo=timezone.utc
+                      )
+                  except Exception:
+                      pass
 
-          articles = []
-          seen = set()
+              return NOW
 
+          def get_image(item):
+              try:
+                  media = item.get("media_content", [])
+
+                  if media and media[0].get("url"):
+                      return media[0]["url"]
+
+                  thumbs = item.get("media_thumbnail", [])
+
+                  if thumbs and thumbs[0].get("url"):
+                      return thumbs[0]["url"]
+
+                  enclosures = item.get("enclosures", [])
+
+                  for enc in enclosures:
+                      if (
+                          enc.get("href")
+                          and enc.get("type", "").startswith("image")
+                      ):
+                          return enc["href"]
+
+              except Exception:
+                  pass
+
+              return ""
+
+          def detect_category(title):
+              t = title.lower()
+
+              major = [
+                  "zəlzələ",
+                  "sunami",
+                  "terror",
+                  "terror aktı",
+                  "terror hücumu",
+                  "partlayış",
+                  "kütləvi yanğın",
+                  "prezident istefa",
+                  "baş nazir istefa",
+                  "earthquake",
+                  "tsunami",
+                  "terror attack",
+                  "explosion",
+                  "president resign",
+                  "prime minister resign",
+                  "землетрясение",
+                  "теракт",
+                  "взрыв"
+              ]
+
+              if any(x in t for x in major):
+                  return "Son Hadisələr"
+
+              criminal = [
+                  "cinayət",
+                  "qətl",
+                  "öldürüldü",
+                  "oğurluq",
+                  "soyğun",
+                  "quldurluq",
+                  "dələduzluq",
+                  "narkotik",
+                  "həbs edildi",
+                  "saxlanıldı",
+                  "polis əməliyyatı",
+                  "məhkəmə",
+                  "məhkum",
+                  "prokurorluq",
+                  "korrupsiya",
+                  "rüşvət",
+                  "cinayət işi",
+                  "преступление",
+                  "убийство",
+                  "кража",
+                  "наркотики",
+                  "арест"
+              ]
+
+              if any(x in t for x in criminal):
+                  return "Kriminal"
+
+              military = [
+                  "ordu",
+                  "hərbi",
+                  "müdafiə",
+                  "silahlı qüvvələr",
+                  "əsgər",
+                  "zabit",
+                  "general",
+                  "tank",
+                  "raket",
+                  "hərbi təlim",
+                  "hərbi əməliyyat",
+                  "müdafiə naziri",
+                  "nato",
+                  "silahlanma",
+                  "drone",
+                  "dron",
+                  "hərbi texnika",
+                  "army",
+                  "military",
+                  "defense",
+                  "missile",
+                  "soldier",
+                  "армия",
+                  "оборона",
+                  "ракета"
+              ]
+
+              if any(x in t for x in military):
+                  return "Hərb"
+
+              politics = [
+                  "prezident",
+                  "baş nazir",
+                  "nazir",
+                  "parlament",
+                  "millət vəkili",
+                  "deputat",
+                  "siyasi",
+                  "siyasət",
+                  "hökumət",
+                  "seçki",
+                  "referendum",
+                  "partiya",
+                  "dövlət başçısı",
+                  "президент",
+                  "премьер-министр",
+                  "министр",
+                  "парламент",
+                  "выборы",
+                  "правительство"
+              ]
+
+              if any(x in t for x in politics):
+                  return "Siyasət"
+
+              economy = [
+                  "iqtisadiyyat",
+                  "iqtisadi",
+                  "manat",
+                  "dollar",
+                  "avro",
+                  "bank",
+                  "neft",
+                  "qaz",
+                  "investisiya",
+                  "vergi",
+                  "büdcə",
+                  "inflyasiya",
+                  "maaş",
+                  "əmək haqqı",
+                  "ixrac",
+                  "idxal",
+                  "şirkət",
+                  "səhm",
+                  "maliyyə",
+                  "экономика",
+                  "доллар",
+                  "евро",
+                  "банк",
+                  "нефть",
+                  "газ",
+                  "инвестиции",
+                  "налог",
+                  "бюджет"
+              ]
+
+              if any(x in t for x in economy):
+                  return "İqtisadiyyat"
+
+              technology = [
+                  "süni intellekt",
+                  "süni zəka",
+                  "ai",
+                  "artificial intelligence",
+                  "texnologiya",
+                  "texnoloji",
+                  "internet",
+                  "rəqəmsal",
+                  "kompüter",
+                  "smartfon",
+                  "telefon",
+                  "robot",
+                  "robototexnika",
+                  "çip",
+                  "prosessor",
+                  "nvidia",
+                  "microsoft",
+                  "google",
+                  "apple",
+                  "openai",
+                  "tesla",
+                  "kibertəhlükəsizlik",
+                  "kiber",
+                  "proqram",
+                  "software",
+                  "hardware",
+                  "startap",
+                  "kosmik texnologiya",
+                  "технология",
+                  "интернет",
+                  "компьютер",
+                  "смартфон",
+                  "робот",
+                  "искусственный интеллект",
+                  "чип"
+              ]
+
+              if any(x in t for x in technology):
+                  return "Texnologiya"
+
+              transport = [
+                  "avtomobil",
+                  "maşın",
+                  "yol",
+                  "nəqliyyat",
+                  "avtobus",
+                  "metro",
+                  "qatar",
+                  "dəmir yolu",
+                  "təyyarə",
+                  "hava limanı",
+                  "aviasiya",
+                  "gəmi",
+                  "liman",
+                  "yol hərəkəti",
+                  "tıxac",
+                  "trafik",
+                  "uçuş",
+                  "автомобиль",
+                  "дорога",
+                  "транспорт",
+                  "автобус",
+                  "поезд",
+                  "самолет",
+                  "аэропорт"
+              ]
+
+              if any(x in t for x in transport):
+                  return "Nəqliyyat"
+
+              sports = [
+                  "futbol",
+                  "basketbol",
+                  "voleybol",
+                  "tennis",
+                  "idman",
+                  "olimpiya",
+                  "çempionat",
+                  "matç",
+                  "klub",
+                  "milli komanda",
+                  "qol",
+                  "oyunçu",
+                  "formula 1",
+                  "ufc",
+                  "boks",
+                  "football",
+                  "sport",
+                  "match",
+                  "чемпионат",
+                  "футбол",
+                  "спорт"
+              ]
+
+              if any(x in t for x in sports):
+                  return "İdman"
+
+              health = [
+                  "səhiyyə",
+                  "xəstəxana",
+                  "həkim",
+                  "tibb",
+                  "xəstəlik",
+                  "müalicə",
+                  "dərman",
+                  "peyvənd",
+                  "sağlamlıq",
+                  "klinika",
+                  "əməliyyat",
+                  "virus",
+                  "epidemiya",
+                  "pandemiya",
+                  "health",
+                  "medicine",
+                  "hospital",
+                  "врач",
+                  "больница",
+                  "медицина",
+                  "лекарство"
+              ]
+
+              if any(x in t for x in health):
+                  return "Səhiyyə"
+
+              science = [
+                  "elm",
+                  "elmi",
+                  "tədqiqat",
+                  "araşdırma",
+                  "kəşf",
+                  "alim",
+                  "kosmos",
+                  "planet",
+                  "astronomiya",
+                  "nasa",
+                  "biologiya",
+                  "fizika",
+                  "kimya",
+                  "genetika",
+                  "science",
+                  "research",
+                  "space",
+                  "scientist",
+                  "наука",
+                  "исследование",
+                  "космос"
+              ]
+
+              if any(x in t for x in science):
+                  return "Elm"
+
+              ecology = [
+                  "ekologiya",
+                  "iqlim",
+                  "qlobal istiləşmə",
+                  "ətraf mühit",
+                  "meşə",
+                  "meşələr",
+                  "su ehtiyatları",
+                  "çirklənmə",
+                  "tullantı",
+                  "yaşıllıq",
+                  "iqlim dəyişikliyi",
+                  "climate",
+                  "environment",
+                  "pollution",
+                  "экология",
+                  "климат",
+                  "окружающая среда"
+              ]
+
+              if any(x in t for x in ecology):
+                  return "Ekologiya"
+
+              culture = [
+                  "mədəniyyət",
+                  "kino",
+                  "film",
+                  "musiqi",
+                  "teatr",
+                  "sənət",
+                  "incəsənət",
+                  "aktyor",
+                  "müğənni",
+                  "festival",
+                  "kitab",
+                  "ədəbiyyat",
+                  "culture",
+                  "music",
+                  "cinema",
+                  "театр",
+                  "музыка",
+                  "кино"
+              ]
+
+              if any(x in t for x in culture):
+                  return "Mədəniyyət"
+
+              society = [
+                  "təhsil",
+                  "məktəb",
+                  "universitet",
+                  "şagird",
+                  "tələbə",
+                  "cəmiyyət",
+                  "sosial",
+                  "ailə",
+                  "uşaq",
+                  "gənclər",
+                  "əmək",
+                  "sosial yardım",
+                  "образование",
+                  "школа",
+                  "университет",
+                  "общество"
+              ]
+
+              if any(x in t for x in society):
+                  return "Cəmiyyət"
+
+              return "Azərbaycan"
+
+          news_data = load_json("news.json")
+          archive_data = load_json("archive.json")
+
+          active = news_data.get("articles", [])
+          archive = archive_data.get("articles", [])
+
+          known_links = {
+              a.get("link")
+              for a in active + archive
+              if a.get("link")
+          }
+
+          new_articles = []
 
           for feed in feeds:
-
               try:
+                  print("Feed yoxlanılır:", feed["name"])
 
-                  data = feedparser.parse(
-                      feed["url"]
-                  )
+                  data = feedparser.parse(feed["url"])
 
+                  for item in data.entries[:50]:
+                      original = item.get("title", "").strip()
+                      link = item.get("link", "").strip()
 
-                  for item in data.entries[:30]:
-
-                      original_title = item.get(
-                          "title",
-                          ""
-                      ).strip()
-
-                      link = item.get(
-                          "link",
-                          ""
-                      ).strip()
-
-
-                      if not original_title or not link:
+                      if not original or not link:
                           continue
 
-
-                      if link in seen:
+                      if link in known_links:
                           continue
 
+                      published_dt = get_published(item)
 
-                      seen.add(link)
+                      if published_dt < CUTOFF:
+                          continue
 
-
-                      # Tərcümə et
-
-                      translated_title = translate_title(
-                          original_title
-                      )
-
-
-                      # Həm orijinal,
-                      # həm tərcümə olunmuş başlıq
-                      # kateqoriyaya göndərilir.
-
-                      category_text = (
-                          original_title
-                          + " "
-                          + translated_title
-                      )
-
+                      translated = translate_title(original)
 
                       category = detect_category(
-                          category_text
+                          translated + " " + original
                       )
 
+                      article = {
+                          "title_original": original,
+                          "title": translated,
+                          "language": "az",
+                          "category": category,
+                          "link": link,
+                          "source": feed["name"],
+                          "published": published_dt.isoformat(),
+                          "country": "Azerbaijan",
+                          "image": get_image(item)
+                      }
 
-                      articles.append({
+                      new_articles.append(article)
+                      known_links.add(link)
 
-                          "title_original":
-                              original_title,
+                      print(
+                          "Yeni:",
+                          translated,
+                          "→",
+                          category
+                      )
 
-                          "title":
-                              translated_title,
-
-                          "language":
-                              "az",
-
-                          "link":
-                              link,
-
-                          "source":
-                              feed["name"],
-
-                          "published":
-                              item.get(
-                                  "published",
-                                  ""
-                              ),
-
-                          "category":
-                              category,
-
-                          "country":
-                              "Azerbaijan"
-
-                      })
-
-
-                      # Tərcümə serverinə
-                      # çox sürətli sorğu göndərməmək üçün
-
-                      time.sleep(0.5)
-
+                      time.sleep(0.4)
 
               except Exception as e:
-
                   print(
                       "Feed xətası:",
                       feed["name"],
                       e
                   )
 
+          active.extend(new_articles)
 
-          # JSON FAYLI
+          still_active = []
+          moved = []
 
-          result = {
+          for article in active:
+              try:
+                  published_dt = datetime.fromisoformat(
+                      article.get("published", "").replace(
+                          "Z",
+                          "+00:00"
+                      )
+                  )
+              except Exception:
+                  published_dt = NOW
 
-              "updated":
-                  datetime.now(
-                      timezone.utc
-                  ).isoformat(),
+              if NOW - published_dt >= timedelta(hours=24):
+                  moved.append(article)
+              else:
+                  still_active.append(article)
 
-              "country":
-                  "Azerbaijan",
-
-              "articles":
-                  articles[:60]
-
+          archive_links = {
+              a.get("link")
+              for a in archive
           }
 
+          for article in moved:
+              if article.get("link") not in archive_links:
+                  archive.append(article)
+                  archive_links.add(article.get("link"))
 
-          with open(
-              "news.json",
-              "w",
-              encoding="utf-8"
-          ) as f:
-
-              json.dump(
-                  result,
-                  f,
-                  ensure_ascii=False,
-                  indent=2
-              )
-
-
-          print(
-              "Toplanan xəbərlər:",
-              len(articles)
+          still_active.sort(
+              key=lambda x: x.get("published", ""),
+              reverse=True
           )
+
+          archive.sort(
+              key=lambda x: x.get("published", ""),
+              reverse=True
+          )
+
+          save_json(
+              "news.json",
+              {
+                  "updated": NOW.isoformat(),
+                  "country": "Azerbaijan",
+                  "articles": still_active
+              }
+          )
+
+          save_json(
+              "archive.json",
+              {
+                  "updated": NOW.isoformat(),
+                  "country": "Azerbaijan",
+                  "articles": archive
+              }
+          )
+
+          print("================================")
+          print("RR NEWS AI UPDATE")
+          print("Yeni:", len(new_articles))
+          print("Aktiv:", len(still_active))
+          print("Arxiv:", len(archive))
+          print("Arxivə köçürüldü:", len(moved))
+          print("================================")
 
           PY
 
-
-      # GITHUB-A YADDA SAXLA
-
       - name: Xəbərləri GitHub-a yadda saxla
         run: |
-
           git config user.name "RR NEWS AI"
-
           git config user.email "actions@github.com"
 
-          git add news.json
-
+          git add news.json archive.json
 
           if git diff --cached --quiet; then
-
-            echo "Yeni xəbər yoxdur."
-
+            echo "Yeni dəyişiklik yoxdur."
           else
-
-            git commit -m "Auto update Azerbaijan news"
-
+            git commit -m "Update RR NEWS AI news and archive"
             git push
-
           fi
