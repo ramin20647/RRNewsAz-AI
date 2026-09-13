@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-13T21:34:58.887657+00:00",
+  "updated": "2026-09-13T23:55:41.460931+00:00",
   "country": "Azerbaijan",
   "articles": [
     {
@@ -301,6 +301,17 @@
       "published": "Fri, 07 Aug 2026 06:42:00 GMT",
       "category": "Azərbaycan",
       "country": "Azerbaijan"
+    },
+    {
+      "title_original": "США объявили о завершении крупнейшей вспышки циклоспориаза - Operativ Məlumat Mərkəzi",
+      "title": "США объявили о завершении крупнейшей вспышки циклоспориаза - Operativ Məlumat Mərkəzi",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQVkFOaVlLUG9UZHFiald0am1McWFRZTA5UWFQUjNqWVlONW5LclI4U0VrcXMwZGpDeGdqOV9JblptNld6X2RQcG5aclhkOUpWbDlZRTd2R09XZ3RNYjRKeEZVeF8tNGF3d3FtZlZITnRxOVlaUHdFZDhsb3R3RUNjQTV0VXp5RjJyRFVmdlR0Y3BKMkx0aXVJZDNBOUxUWFhV?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-09-13T05:26:12+00:00",
+      "country": "Azerbaijan",
+      "image": ""
     }
   ]
 }
