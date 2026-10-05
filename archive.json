@@ -1,7 +1,117 @@
 {
-  "updated": "2026-10-05T06:36:57.333779+00:00",
+  "updated": "2026-10-05T15:38:19.455924+00:00",
   "country": "Azerbaijan",
   "articles": [
+    {
+      "title_original": "Сборная Азербайджана обыграла Литву - Vesti.az",
+      "title": "Сборная Азербайджана обыграла Литву - Vesti.az",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5kVkxLaWJZSnl0RzNZbmtGaHFUblhtQ2VtcVEyZ1JjMHhmUDdVZC13anFiU0JrY0VjX2ZKUlpyZDk5OWdZZlFBNUN5U0NnNW1Fd05NUEdIVnZ2UFN1WktmVUJRTWhxb0pmSDdhdXp0MXVoN01x?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T15:31:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "Баку, Каспий, пахлава и братство: что думают в Астане об Азербайджане - ОПРОС - AZƏRTAC – Azərbaycan Dövlət İnformasiya Agentliyi",
+      "title": "Баку, Каспий, пахлава и братство: что думают в Астане об Азербайджане - ОПРОС - AZƏRTAC – Azərbaycan Dövlət İnformasiya Agentliyi",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQX1MzZkNnbmpkS2JTd09LUFI0T1N3S1dNMm9YeEozUS1SaTd3YnlOQ0FzLWhNSG12dXozN3ZJakZYVmFyRTJJOWxQZlJZWnJVVXVzZlV4NmE4NzhNMmhKTUN5ZnNOTEdBN05BQ3lmbUdvdGRyX0VUT0FFNFZ3ZVhuM1BQbmZ2ekxKZXJUeG04ZnlNTlRhMHU3MXhrM3c2V3NHdGd2UnJjN1BPZ1Y5b2NoTWNVQQ?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T15:06:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "Азербайджан и Армения: мир или передышка перед реваншем? - 1News.az",
+      "title": "Азербайджан и Армения: мир или передышка перед реваншем? - 1News.az",
+      "language": "az",
+      "category": "Dünya",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbnBYY21wNnk1TXV2U0F5eUFla3J1MTNGOFdELVNCTlRQQ2NmMVVaZVQxdndjZkRjUzNjSlVWZVQtaGV2blQwVFJ6RVQwUEJaV2ZVQkVUWTg5bE5kMHhrZVJlQmFyYkI5ZzMxV0Q2T0x2U0hTaUNodld1cmZDOTBnb2h5OWxwUjcyLWJ6cFV1OWVkem5JYVVCMVRGSU0yQTQ?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T13:50:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "Лига наций УЕФА: Стартовал матч Азербайджан -Литва - Report.az",
+      "title": "Лига наций УЕФА: Стартовал матч Азербайджан -Литва - Report.az",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNSUxuOWc1aDB3VHd2dWp1ZndSbUM3VzNfMDRNMk5wNzlNV21WQjVfdi1xbXdkbWJVMXpST2RwdXR6RDVOYS1nc0pfNG80LUdxNHktc0pBV3lIX3BmY1pobl9ZQ004VDh0TVhiSFU1NEpHaDdGa2VOSEtVbUNUR2pVQ1ZpOUTSAYoBQVVfeXFMTU1XdWlaY2VpRV9DX1dTR3BPLTl1Ylp2NThVX0N3LTVXLUp2c0hBQjBJTXkwRVoweGhEMTFJMnlxLWlfaDdOQUgzYzRrNTVvLUx5MVdWY2ZDT2xOdUh3SDJuSGFkc3pFc3diSDJUR3JqYm14blZjRi1RZURNSG1wX09Kd2h2b0VzdDlB?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T13:03:57+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "В горных районах Азербайджана из-за тумана ухудшится видимость на дорогах - 1News.az",
+      "title": "В горных районах Азербайджана из-за тумана ухудшится видимость на дорогах - 1News.az",
+      "language": "az",
+      "category": "Nəqliyyat",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNU0xhbS1WWEU2SUdfcV9zcnJSUVB1T3ZMS0RUcEtkYmpWRXdFUWxlX0JlSlJOVEZJODh4Q3NvSGpZM3RfQzBNaE9oeFFsTXhzd3FpcldUbUpoMjJZa0lEVk1EeGdEOWhVZ0pMc3hzaXVaLW9adXZHazF2M2NLUEk2R3d0cThUSWZkUHIxOERFVE5yalZDemlRQkdxczJRMlV3QzNCX2ttS0x2dm1rWHZybGpENU1taXZPT2pz?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T12:40:15+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "Азербайджан возглавил список стран ОТГ по импорту турецкой продукции - Media.az",
+      "title": "Азербайджан возглавил список стран ОТГ по импорту турецкой продукции - Media.az",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQM0NWT0hLSklsU0psUE5QajM4RmFCTjB0TVBzUENaZVJ5VXdVMjEwOVFqa2s0ZGdmYk1jNkRKY0p2SDlxOVdheHFCVVVULTZrdFhrdXY0RnlGclpIR3RsX0F1YWFXZFlocnBoN09KZ1FJZHZHcU5xOXRsZ3VzbTdyZEpDaFhfM2FxWG5yMVUta2k5YUJGUEV2WTBn?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T11:15:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "Кардиологи тюркоязычных государств собрались в Ташкенте - AZƏRTAC – Azərbaycan Dövlət İnformasiya Agentliyi",
+      "title": "Кардиологи тюркоязычных государств собрались в Ташкенте - AZƏRTAC – Azərbaycan Dövlət İnformasiya Agentliyi",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPRTdOZ2xfYTRibVhCVXVhbTRnRkdfNjhSY1pjdHVCX1JMelBhenBGMUNIRkhTZzBkZ2FUSXZVejl2azNnZ0RlbVFlSFpuY2NKX3FpYmFkM005aVJjc1FPam84TDVfSGRnd3BqY0FXWDAwaXBOVjVJWExDbXJZUFF6TEpZbHRBREpaamNmQU1fTzVOeDFlREs1eTdR?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T10:07:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "В аккаунтах президента Ильхама Алиева опубликован видеоролик о выступлении на VIII Съезде партии «Ени Азербайджан» - Caliber.Az",
+      "title": "В аккаунтах президента Ильхама Алиева опубликован видеоролик о выступлении на VIII Съезде партии «Ени Азербайджан» - Caliber.Az",
+      "language": "az",
+      "category": "Siyasət",
+      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU0tlVUt0M2M1NE1wVXI5RWpYTTNRVHp5aFgzczVtWUlOLTNZNjN3RG5xV1lFX3I0am5iaXdTMlRzMDRMbnNlMHlHYk1LU0JZa0hnZHRSREthQzhGUDJTb3prV3JZczJNYS1UTElKamlJZVZzQ3lULXlubGszczlQYmwyOWxvQmV0eDdxMDNFZmlfdjcyTWgwQmZGR0JRaEFfWWRKeTFfWjFIUjZRaEYyN1M5emdtU00tb2FpSEZTYms3QWNIOWloNWc5VFlzTDJWWE1uTFZVMHczcGJoaE03VW9MWQ?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T07:18:19+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "На страницах Ильхама Алиева опубликован фрагмент выступления на съезде YAP - ВИДЕО - 1News.az",
+      "title": "На страницах Ильхама Алиева опубликован фрагмент выступления на съезде YAP - ВИДЕО - 1News.az",
+      "language": "az",
+      "category": "Azərbaycan",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMWVna2RGQTRZX3NrQ283T0ZucVR2YUNKT0pVcWtRMGFaclkyeXllWnNod3I1bFBtZEQzajF0cEtWZGRNY0VwSHZoRDlJMHFMWF9rTEpEbFRLTFhqaGZfdjZ4X29YVThPcTZ3MWFpU1BVZVIxNnZ1Ui1MWWlibC1ZNVpSV3FNdzN4M0gxeWM4QmFLeTlrN2lxbnZXTHlMNFFwUWdqWV9ibkpEb3FWR1BUODVqeGpHTTJZUk50ZDRNcw?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T07:13:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
+    {
+      "title_original": "Президент Ильхам Алиев: В политике нет места эмоциям - Media.az",
+      "title": "Президент Ильхам Алиев: В политике нет места эмоциям - Media.az",
+      "language": "az",
+      "category": "Siyasət",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOeGcwckkyVVFld1ptRjAyb0pKNV9ERnd2LTNxdlRwaC1SWGE4Tk5DUjhkUjBaRnFtc1BMeXQzeUZIN1d3R19PczFKNjcya3R2Y2x1S1pQMFNfRFRVeTNzSDR3eEUwZ2RrQ0I3LWx2ekJVU0IxZXB1LUR3UzhZZlFKS01Sdw?oc=5",
+      "source": "Google News - Azərbaycan",
+      "published": "2026-10-04T07:05:00+00:00",
+      "country": "Azerbaijan",
+      "image": ""
+    },
     {
       "title_original": "В МИД Азербайджана поздравили Лесото по случаю Дня независимости - Media.az",
       "title": "В МИД Азербайджана поздравили Лесото по случаю Дня независимости - Media.az",
